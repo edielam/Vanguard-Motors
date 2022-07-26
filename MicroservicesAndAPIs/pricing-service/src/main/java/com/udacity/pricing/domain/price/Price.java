@@ -1,7 +1,4 @@
 package com.udacity.pricing.domain.price;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,10 +9,8 @@ import java.math.BigDecimal;
 /**
  * Represents the price of a given vehicle, including currency.
  */
-@Entity(name = "price")
-@Setter @Getter @ToString
+@Entity
 public class Price {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -26,9 +21,48 @@ public class Price {
     public Price() {
     }
 
+    public Price(Long id, String currency, BigDecimal price, Long vehicleId) {
+        this.id = id;
+        this.currency = currency;
+        this.price = price;
+        this.vehicleId = vehicleId;
+    }
+
     public Price(String currency, BigDecimal price, Long vehicleId) {
         this.currency = currency;
         this.price = price;
+        this.vehicleId = vehicleId;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public Long getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(Long vehicleId) {
         this.vehicleId = vehicleId;
     }
 }
